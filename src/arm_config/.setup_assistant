@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: urdf
+    relative_path: urdf/urdf.urdf
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/urdf.srdf
+  CONFIG:
+    author_name: brkygkcn
+    author_email: berkay.gokcen@altinay.com
+    generated_timestamp: 1639567065

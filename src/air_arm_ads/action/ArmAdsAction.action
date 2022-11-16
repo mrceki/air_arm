@@ -1,0 +1,8 @@
+#goal definition
+moveit_msgs/RobotTrajectory trajectory
+---
+#result definition
+bool result
+---
+#feedback
+string state

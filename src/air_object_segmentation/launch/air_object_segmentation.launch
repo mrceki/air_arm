@@ -1,0 +1,12 @@
+<launch>
+
+  <node name="air_object_segmentation_pc_tf" pkg="air_object_segmentation" type="cloud_transformer" respawn="false" output="screen"/>
+
+  <!--AIR object segmentation node-->
+  <node name="air_object_segmentation" pkg="air_object_segmentation" type="segmentation.py"
+    respawn="false" output="screen">
+    <param name="sub_pcl_topic_name" type="string" value="/camera/depth/color/points"/>
+    <param name="pub_pcl_topic_name" type="string" value="/grasp_object"/> <!--/haf_grasping/depth_registered/single_cloud/points_in_lcs-->
+  </node>
+
+</launch>

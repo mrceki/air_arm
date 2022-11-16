@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+<!--  <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
+  <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>-->
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find air_wrist_ros_config)/config/controllers.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/air_wrist" args="joint_state_controller
+                                          air_wrist_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+    <remap from="/joint_states" to="/air_wrist/joint_states" />
+  </node>
+
+  <node name="joint_state_relay" pkg="topic_tools" type="relay"
+    args="/air_wrist/joint_states /joint_states"/>
+</launch>

@@ -1,0 +1,6 @@
+air_wrist:
+  - name: fake_air_wrist_controller
+    joints:
+      - roll_j
+      - pitch_j
+      - yaw_j

@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: air_wrist_ros
+    relative_path: urdf/air_wrist_ros.urdf
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/air_wrist_ros.srdf
+  CONFIG:
+    author_name: AIRLAB
+    author_email: berkay.gokcen@altinay.com
+    generated_timestamp: 1600324090

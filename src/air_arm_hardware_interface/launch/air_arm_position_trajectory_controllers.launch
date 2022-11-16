@@ -1,0 +1,6 @@
+<launch>
+    <!-- PARAMS + ROSPARAMS -->
+  <rosparam file="$(find air_arm_hardware_interface)/config/hardware.yaml" command="load"/>
+    <!-- NODES output="screen" -->
+  <node name="air_arm_hardware_interface" pkg="air_arm_hardware_interface" type="air_arm_hardware_interface_node"  output="screen"/>
+</launch>

@@ -1,0 +1,9 @@
+<launch>
+  <!--Load the joint controllers to param server-->
+  <rosparam file="$(find air_wrist_ros_config)/config/controllers.yaml" command="load"/>
+
+  <!--Load controllers-->
+  <node name="spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/air_wrist" args="joint_state_controller
+    air_wrist_controller"/>
+</launch>

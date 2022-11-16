@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="air_wrist_ros" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find air_wrist_ros)/urdf/air_wrist_ros.gazebo.xacro" />
+<!-- Used for fixing robot to Gazebo 'base_link'-->
+<link name="world"/>
+
+<joint name="fixed" type="fixed">
+  <parent link="world"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 1" rpy="-1.5708 0 0" />
+</joint>
+
+<link name="base_link">
+        
+<inertial>
+            <origin xyz="-0.0025061 -0.0025058 0.064711" rpy="0 0 0" />
+            <mass value="0.18492" />
+            <inertia ixx="0.00023882" ixy="1.6596E-06" ixz="3.7747E-07" iyy="0.00023882" iyz="3.7901E-07" izz="6.8442E-05" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="base_x">
+        
+        <inertial>
+            <origin xyz="3.4694E-18 -7.6328E-17 3.2092E-16" rpy="0 0 0" />
+            <mass value="0.0057459" />
+            <inertia ixx="7.8242E-08" ixy="-1.0796E-22" ixz="-4.0384E-23" iyy="7.6638E-08" iyz="6.4201E-10" izz="7.5896E-08" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/base_x.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.77647 0.75686 0.73725 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/base_x.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_xj" type="fixed">
+        <origin xyz="0.04 -0.0225 0" rpy="2.8798 0 1.5708" />
+        <parent link="base_link" />
+        <child link="base_x" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="base_y">
+        
+        <inertial>
+            <origin xyz="1.0408E-17 -4.7878E-16 -1.112E-15" rpy="0 0 0" />
+            <mass value="0.0057459" />
+            <inertia ixx="7.8242E-08" ixy="-1.8379E-17" ixz="1.4312E-17" iyy="7.7008E-08" iyz="-8.9423E-13" izz="7.5526E-08" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/base_y.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.77647 0.75686 0.73725 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/base_y.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_yj" type="fixed">
+        <origin xyz="0 -0.0225 0.04" rpy="1.9641 0 -1.5708" />
+        <parent link="base_link" />
+        <child link="base_y" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="roll_cardan">
+        
+        <inertial>
+            <origin xyz="1.4118E-08 -1.4882E-08 1.9978E-08" rpy="0 0 0" />
+            <mass value="0.013068" />
+            <inertia ixx="3.0076E-06" ixy="2.5944E-12" ixz="3.3722E-12" iyy="3.0076E-06" iyz="-1.7367E-14" izz="5.7134E-06" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/roll_cardan.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/roll_cardan.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="roll_j" type="revolute">
+        <origin xyz="0 -0.1845 0" rpy="1.5708 -0.7854 0" />
+        <parent link="base_link" />
+        <child link="roll_cardan" />
+        <axis xyz="1 0 0" />
+        <limit lower="-0.5235" upper="0.5235" effort="30" velocity="1" />
+    </joint>
+    <link name="top_pitch">
+        
+        <inertial>
+            <origin xyz="0.0019886 0.0019886 0.027456" rpy="0 0 0" />
+            <mass value="0.056375" />
+            <inertia ixx="2.3625E-05" ixy="-3.3938E-07" ixz="-2.6419E-08" iyy="2.3625E-05" iyz="-2.6417E-08" izz="4.4801E-05" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/top_pitch.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/top_pitch.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="pitch_j" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 -0.7854" />
+        <parent link="roll_cardan" />
+        <child link="top_pitch" />
+        <axis xyz="0.70711 -0.70711 0" />
+        <limit lower="-0.5235" upper="0.5235" effort="30" velocity="1" />
+    </joint>
+    <link name="top_x">
+        
+        <inertial>
+            <origin xyz="0 -1.7035E-15 -1.7417E-15" rpy="0 0 0" />
+            <mass value="0.0057459" />
+            <inertia ixx="7.8242E-08" ixy="4.4796E-23" ixz="8.0996E-23" iyy="7.5526E-08" iyz="-5.6248E-23" izz="7.7008E-08" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/top_x.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.77647 0.75686 0.73725 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/top_x.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="top_xj" type="fixed">
+        <origin xyz="0.04 0 0" rpy="2.3562 1.5708 0" />
+        <parent link="top_pitch" />
+        <child link="top_x" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="top_y">
+        
+        <inertial>
+            <origin xyz="5.5511E-17 -2.158E-15 2.1684E-15" rpy="0 0 0" />
+            <mass value="0.0057459" />
+            <inertia ixx="7.8242E-08" ixy="9.4579E-23" ixz="1.1731E-22" iyy="7.5526E-08" iyz="-2.647E-23" izz="7.7008E-08" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/top_y.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.77647 0.75686 0.73725 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/top_y.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="top_yj" type="fixed">
+        <origin xyz="0 0.04 0" rpy="2.3562 1.5708 0" />
+        <parent link="top_pitch" />
+        <child link="top_y" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="yaw_top">
+        
+        <inertial>
+            <origin xyz="0.0027885 -0.0027266 0.10755" rpy="0 0 0" />
+<!--            <mass value="0.28988" />-->
+            <mass value="2.30313" />
+            <inertia ixx="0.00021505" ixy="-2.243E-08" ixz="2.722E-07" iyy="0.0002927" iyz="1.1532E-05" izz="0.00016683" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/yaw_top.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://air_wrist_ros/meshes/yaw_top.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!--  <joint
+    name="yaw_j"
+    type="continuous">
+    <origin
+      xyz="0 0 0.024997"
+      rpy="0 0 -2.2473" />
+    <parent
+      link="top_pitch" />
+    <child
+      link="yaw_top" />
+    <axis
+      xyz="0 0 1" />
+  </joint>-->
+    <joint name="yaw_j" type="revolute">
+        <origin xyz="0 0 0.024997" rpy="0 0 -2.2473" />
+        <parent link="top_pitch" />
+        <child link="yaw_top" />
+        <axis xyz="0 0 1" />
+        <limit lower="-0.5235" upper="0.5235" effort="30" velocity="1" />
+    </joint>
+    
+    <transmission name="trans_roll_j">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="roll_j">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="roll_j_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_pitch_j">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="pitch_j">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="pitch_j_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_yaw_j">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="yaw_j">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="yaw_j_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+</robot>

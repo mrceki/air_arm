@@ -1,0 +1,33 @@
+actions: []
+authors: Sachin Chitta <sachinc@willowgarage.com>, Dave Coleman <dave@picknik.ai>,
+  Mike Lautman <mike@picknik.ai>
+brief: ''
+bugtracker: ''
+depends:
+- moveit_core
+- moveit_ros_perception
+- eigen
+- pluginlib
+- rosbag
+- moveit_commander
+- interactive_markers
+- moveit_visual_tools
+- catkin
+- tf2_eigen
+- moveit_fake_controller_manager
+- tf2_ros
+- panda_moveit_config
+- pcl_conversions
+- joy
+- tf2_geometry_msgs
+- geometric_shapes
+- moveit_ros_planning_interface
+- pcl_ros
+description: The moveit_tutorials package
+license: BSD
+maintainers: Dave Coleman <dave@picknik.ai>, Mike Lautman <mike@picknik.ai>
+msgs: []
+package_type: package
+repo_url: ''
+srvs: []
+url: ''
